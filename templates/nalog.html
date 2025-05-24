@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>Биоскоп у београду - Налог!</title>
+{% endblock %}
+
+{% block activeabout %}active{% endblock %}
+
+{% block body %}
+{% if request.args.get('prijavaPotrebna') %}
+    {% if request.args.get('prijavaPotrebna') == 'true' %}
+        <div class="error-msg">
+            Морате се пријавити или направити налог ради извршења жељене радње!
+        </div>
+    {% endif %}
+{% endif %}
+{% if profile is defined and profile != none %}
+<div class="profile-card">
+    <h1>Добро дошли {{profile.first_name}} {{profile.last_name}}</h1>
+    <div class="details">
+        <h3>{{profile.email}}</h3>
+        <a href="/log-out">Излогуј се</a>
+        <a href="/delete-account">Обриши налог</a>
+        <a href="/edit-account">Измени налог</a>
+    </div>
+    <p>Имате {{profile.points}} поена</p>
+    <span>Тип налога: {{profile.type}}</span>
+    <h3>Резервисане карте</h3>
+    {% for ticket in tickets %}
+        <a href="/kupovina/{{ticket.projection.id}}" class="ticket">
+            <h4>Филм: {{ticket.projection.movie.title}}</h4>
+            <img src="{{ url_for('static', filename='images/movies/'+ticket.projection.movie.image) }}" alt="Poster">
+            <p>Време пројекције: {{ticket.projection.time}}</p>
+            <p>{{ticket.projection.cinemahall.name}}</p>
+            <p>Ред: {{ticket.seat.row}} Седиште: {{ticket.seat.column}}</p>
+        </a>
+    {% endfor %}
+</div>
+{% if request.args.get('kupovina') %}
+    {% if request.args.get('kupovina') == 'true' %}
+        <div class="success-msg">
+            Успешно сте резервисали карте за изабрану пројекцију и седишта!
+        </div>
+    {% endif %}
+{% endif %}
+{% if profile.type == 'admin' %}
+<div class="admin">
+<h1>Додај филм</h1>
+<form action="/movie" method="POST" enctype="multipart/form-data">
+    <input type="text" name="title" placeholder="Назив" required>
+    <input type="number" name="duration" placeholder="Дужина трајања" required>
+    <textarea rows="5" cols="80" name="description" placeholder="Опис" required></textarea>
+    <input type="file" name="file" accept=".jpg">
+    <input type="submit" value="Додај филм">
+</form>
+<h1>Филмови</h1>
+<div class="movies-list">
+    {% for movie in movies %}
+    <div class="movie">
+        {{movie.title}} <a href="/movie/{{movie.id}}">Обриши</a>
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+<h1>Закажи пројекцију филма</h1>
+Претходном акцијом је заказано {{ request.args.get('scheduled') }} пројкеција
+<form action="/schedule" method="POST">
+    <label>Сала:</label>
+    <select name="hall" required>
+        {% for hall in cinemahalls %}
+            <option value="{{hall.id}}">{{hall.name}}</option>
+        {% endfor %}
+    </select>
+    <label>Филм:</label>
+    <select name="movie" required>
+        {% for movie in movies %}
+            <option value="{{movie.id}}">{{movie.title}}</option>
+        {% endfor %}
+    </select>
+    <input type="date" name="date" required />
+    <input type="time" name="time" required />
+    <input type="number" name="price" placeholder="Цена" />
+    <label>Поновљање колико дана:</label>
+    <input type="number" name="repeat" value="0"/>
+    <p>Сваки дан за када се закаже а није могуће неће бити заказано</p>
+    <input type="submit" value="Додај пројекције">
+</form>
+<h1>Пројекције</h1>
+<table class="schedule">
+<tr>
+    <th>Време</th>
+    <th>Филм</th>
+    <th>Сала</th>
+    <th>Бриши</th>
+</tr>
+{% for projection in projections %}
+<tr>
+    <th>{{projection.time}}</th> 
+    <th>{{projection.movie.title}}</th>
+    <th>{{projection.cinemahall.name}}</th>
+    <th><a href="/schedule/{{projection.id}}">Обриши</a></th>
+</tr>
+{% endfor %}
+</table>
+<h1>Додај новости</h1>
+<form action="/novosti" method="POST" enctype="multipart/form-data">
+    <input type="text" name="title" placeholder="Наслов" required>
+    <textarea rows="5" cols="80" name="content" placeholder="Садржај" required></textarea>
+    <input type="file" name="file" accept=".jpg">
+    <input type="submit" value="Додај новост">
+</form>
+<h1>Новости</h1>
+<div class="news">
+{% for newsitem in news %}
+<h3>{{newsitem.title}}</h3>
+<p>{{newsitem.content}}</p>
+<a href="/novosti/{{newsitem.id}}">Обриши вест ^</a>
+{% endfor %}
+</div>
+</div>
+{% endif %}
+{% else %}
+<h1>Направи налог или се улогуј</h1>
+<form action="/nalog" method="POST" class="account">
+    <input type="email" name="email" placeholder="Адреса електронске поште" required>
+    <input type="password" name="password" placeholder="Шифра" required>
+    <input type="submit" value="Пријави се/Креирај налог">
+</form>
+{% endif %}
+{% endblock %}

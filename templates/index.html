@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>Биоскоп у београду!</title>
+{% endblock %}
+
+{% block activehome %}active{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Филмови у биоскопу!</h1>
+    <div class="repertoire">
+        {% for movie in movielist %}
+        <div>
+            <div class="movie">
+                <img src="{{ url_for('static', filename='images/movies/'+movie.image) }}">
+                <h2>{{movie.title}}</h2>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+    <div class="latest-news">
+    <h1>Вести</h1>
+    {% for newsitem in news %}
+    <div class="news-item">
+        <img src="{{ url_for('static', filename='images/news/'+newsitem.image) }}">
+        <h3>{{newsitem.title}}</h3>
+        <p>{{newsitem.content}}</p>
+        <div class="clearfix"></div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

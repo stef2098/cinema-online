@@ -1,0 +1,606 @@
+*{
+    box-sizing: border-box;
+}
+
+.nav {
+    background-color: maroon;
+    border-radius: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.nav .link {
+    display: inline;
+    width: 25%;
+    float: left;
+    padding: 15px;
+    border-radius: 20px;
+    transition: .3s;
+}
+
+.nav .active {
+    background-color: brown;
+}
+
+.nav .link:hover {
+    background-color: brown;
+}
+
+.nav .link a {
+    width: 100%;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.content {
+    width: 75%;
+    float: left;
+}
+
+.content h1 {
+    text-align: center;
+}
+
+.content.full {
+    width: 100%;
+}
+
+.content .repertoire {
+    width: 100%;
+}
+
+.content .repertoire div {
+    width: 25%;
+    padding: 0 10px;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.content.full .repertoire div {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.content .repertoire div .movie {
+    width: 100%;
+    background-color: maroon;
+    border-radius: 25px;
+    padding: 10px;
+    text-align: center;
+}
+
+.content.full .repertoire div .movie {
+    text-align: left;
+}
+
+.content .repertoire .movie img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.content.full .repertoire .movie img {
+    width: 25%;
+    float: left;
+}
+
+.content .repertoire .movie h2 {
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.content.full .repertoire .movie h2 {
+    font-size: 36px;
+    width: 75%;
+    text-align: center;
+}
+
+.content .repertoire .movie a {
+    width: 100%;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background-color: maroon;
+    border: 2px solid brown;
+    border-radius: 15px;
+    padding: 5px;
+    transition: .3s;
+}
+
+.content.full .repertoire .movie a {
+    float: left;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 10px;
+}
+
+.content .repertoire .movie a:hover {
+    background-color: brown;
+    border: 4px solid maroon;
+}
+
+.content.full .repertoire .movie .times {
+    width: 75%;
+    text-align: center;
+}
+
+.latest-news h1 {
+    text-align: center;
+}
+
+.latest-news{
+    width: 25%;
+    float: left;
+}
+
+.latest-news .news-item {
+    width: 100%;
+    background-color: maroon;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.latest-news.full {
+    width: 100%;
+}
+
+.latest-news .news-item img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.latest-news.full .news-item img {
+    width: 25%;
+    border-radius: 10px;
+    float: left;
+    margin-right: 10px;
+}
+
+.latest-news .news-item h3 {
+    color: white;
+}
+
+.latest-news .news-item p {
+    color: white;
+}
+
+.footer {
+    background-color: maroon;
+    padding: 40px;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.slideshow {
+    width: 80%;
+    margin: auto;
+    position: relative;
+}
+
+.slideshow .slide {
+    width: 100%;
+    display: none;
+}
+
+.slideshow .slide img {
+    width: 100%;
+}
+
+.slideshow .prev {
+    position: absolute;
+    left: 10px;
+    bottom: 50%;
+}
+
+.slideshow .next {
+    position: absolute;
+    right: 10px;
+    bottom: 50%;
+}
+
+.slideshow .next, .slideshow .prev {
+    color: white;
+    background-color: rgba(255, 0, 0, 0.4);
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: .3s;
+}
+
+.slideshow .next:hover, .slideshow .prev:hover{
+    background-color: rgba(255, 0, 0, 1);
+    scale: 1.1;
+}
+
+.movie-info {
+    width: 100%;
+    padding: 10px;
+    background-color: maroon;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    text-align: center;
+}
+
+.movie-info img {
+    width: 25%;
+    float: left;
+    border-radius: 15px;
+}
+
+.movie-info .info-box {
+    width: 75%;
+    float: left;
+    color: #fff;
+    text-align: center;
+}
+
+.movie-info .info-box span {
+    float: left;
+    display: block;
+    color: white;
+    background-color: brown;
+    border-radius: 10px;
+    padding: 10px;
+    width: 49.5%;
+    margin-bottom: 10px;
+    margin-left: 0.25%;
+    margin-right: 0.25%;
+}
+
+.movie-info button {
+    float: left;
+    display: block;
+    color: white;
+    background-color: brown;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    width: 7px;
+    height: 7px;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 0.25%;
+    margin-right: 0.25%;
+}
+
+.movie-info a {
+    float: left;
+    display: block;
+    color: white;
+    background-color: brown;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 0.25%;
+    margin-right: 0.25%;
+    text-decoration: none;
+}
+
+.movie-info button.buy {
+    width: 100%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    height: auto;
+}
+
+.movie-info .info-box .seats {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
+}
+
+.movie-info .info-box .seats .row {
+    display: flex;
+    flex-wrap: nowrap; 
+    margin: auto;
+}
+
+.movie-info .info-box .seats .row .seat {
+    float: left;
+    display: block;
+    color: white;
+    background-color: brown;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 0.25%;
+    margin-right: 0.25%;
+}
+
+.movie-info .info-box .seats .row .seat:hover {
+    background-color: #e0e0e0;
+}
+
+.movie-info .info-box .seats .row .seat:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.profile-card {
+    background-color: maroon;
+    padding: 40px;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.profile-card .details a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border: 2px solid white;
+    margin: 10px;
+    border-radius: 25px;
+    transition: .3s;
+}
+
+.profile-card .details a:hover {
+    padding: 15px;
+}
+
+.profile-card form input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+.admin form {
+    background-color: maroon;
+    padding: 40px;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.admin form input, .admin form select, .admin form textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+.admin form input[type=submit] {
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.admin form input[type=submit]:hover {
+    background-color: brown;
+    border: 4px solid maroon;
+}
+
+.admin .movies-list {
+    background-color: maroon;
+    padding: 40px;
+    color: white;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.admin .movies-list a {
+    text-decoration: none;
+    color: rgb(213, 213, 213);
+    float: right;
+}
+
+.admin .schedule {
+    background-color: maroon;
+    padding: 40px;
+    color: white;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.admin .schedule a{
+    text-decoration: none;
+    color: rgb(213, 213, 213);
+}
+
+.admin .news {
+    background-color: maroon;
+    padding: 40px;
+    color: white;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.admin .news a {
+    text-decoration: none;
+    color: rgb(213, 213, 213);
+}
+
+.success-msg {
+    background-color: green;
+    padding: 40px;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.error-msg {
+    background-color: red;
+    padding: 40px;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+form.account {
+    background-color: maroon;
+    padding: 40px;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+form.account input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 900px){
+    .content {
+        width: 100%;
+    }
+
+    .latest-news {
+        width: 100%;
+    }
+
+    .slideshow {
+        width: 100%;
+    }
+
+    .latest-news.full .news-item img {
+        width: 100%;
+    }
+}
+
+.content .date {
+    width: 100%;
+    background-color: maroon;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.content .date .today {
+    color: #fff;
+    font-weight: bold;
+}
+
+.content .date a {
+    text-decoration: none;
+    color: #fff;
+    border: 2px solid maroon;
+    transition: 0.3s;
+    border-radius: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.content .date a:hover {
+    background-color: brown;
+    border: 4px solid maroon;
+}
+
+.ticket {
+    background-color: maroon;
+    padding: 20px;
+    color: white;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+    border: 3px solid brown;
+    display: inline-block;
+    transition: .3s;
+    text-decoration: none;
+}
+
+.ticket img {
+    width: 120px;
+    height: auto;
+    border-radius: 15px;
+    margin-right: 20px;
+}
+
+.ticket {
+    flex: 1;
+}
+
+.ticket h4 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ticket p {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.ticket:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 600px){
+    .content .repertoire div {
+        width: 50%;
+    }
+
+    .content.full .repertoire div .movie img {
+        width: 50%;
+    }
+
+    .content.full .repertoire .movie h2 {
+        width: 50%;
+    }
+
+    .content.full .repertoire .movie .times {
+        width: 50%;
+    }
+
+    .movie-info .info-box {
+        width: 100%;
+    }
+
+    .movie-info img {
+        width: 100%;
+    }
+
+    .movie-info span {
+        width: 24%;
+    }
+    
+    .movie-info button {
+        width: 24%;
+    }
+    
+    .movie-info button.buy {
+        width: 49%;
+    }
+}

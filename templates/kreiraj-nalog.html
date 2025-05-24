@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>Биоскоп у београду - Налог!</title>
+{% endblock %}
+
+{% block activeabout %}active{% endblock %}
+
+{% block body %}
+<h1>Направи налог</h1>
+<form action="/kreiraj-nalog" method="POST" class="account">
+    <input type="text" name="name" placeholder="Име" required>
+    <input type="text" name="surname" placeholder="Презиме" required>
+    <input type="email" name="email" placeholder="Адреса електронске поште" required value="{{email}}">
+    <input type="password" name="password" placeholder="Шифра" required value="{{password}}">
+    <input type="submit" value="Пријави се/Креирај налог">
+</form>
+{% endblock %}

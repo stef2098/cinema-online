@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>Биоскоп у београду - Репертоар!</title>
+{% endblock %}
+
+{% block activesched %}active{% endblock %}
+
+{% block body %}
+<div class="content full">
+    <div class="date">
+        <div class="today">
+            {{ date }}
+        </div>
+        <a href="/repertoar/{{previous_date}}">Дан -1</a>
+        <a href="/repertoar/{{next_date}}">Дан +1</a>
+    </div>
+    <div class="repertoire">
+        {% for movie in movielist %}
+            <div>
+                <div class="movie">
+                    <img src="{{ url_for('static', filename='images/movies/'+movie.image) }}">
+                    <h2>{{movie.title}}</h2>
+                    <div class="times">
+                        {% for projection in movie.filtered_projections %}
+                            <a href="/kupovina/{{projection.id}}">{{ projection.time.time() }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="clearfix"></div>
+{% endblock %}

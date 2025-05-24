@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>Биоскоп у београду - Репертоар!</title>
+{% endblock %}
+
+{% block activenews %}active{% endblock %}
+
+{% block body %}
+<div class="latest-news full">
+    {% for newsitem in news %}
+    <div class="news-item">
+        <img src="{{ url_for('static', filename='images/news/'+newsitem.image) }}">
+        <h3>{{newsitem.title}}</h3>
+        <p>{{newsitem.content}}</p>
+        <div class="clearfix"></div>
+    </div>
+    {% endfor %}
+</div>
+<div class="clearfix"></div>
+{% endblock %}

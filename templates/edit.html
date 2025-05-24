@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>Биоскоп у београду - Измена налога!</title>
+{% endblock %}
+
+{% block body %}
+{% if user is defined and user != none %}
+<div class="profile-card">
+    <form action="/edit-account" method="POST">
+        <input type="text" name="name" value="{{user.first_name}}", required>
+        <input type="text" name="surname" value="{{user.last_name}}", required>
+        <input type="email" name="email" value="{{user.email}}", required>
+        <input type="submit" value="Сачувај промене">
+    </form>
+</div>
+{% endif %}
+{% endblock %}

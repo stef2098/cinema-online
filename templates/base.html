@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %} {% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="nav">
+        <div class="link {% block activehome %} {% endblock %}"><a href="/index">БГ Биоскоп</a></div>
+        <div class="link {% block activesched %} {% endblock %}"><a href="/repertoar">Репертоар</a></div>
+        <div class="link {% block activenews %} {% endblock %}"><a href="/novosti">Новости</a></div>
+        <div class="link {% block activeabout %} {% endblock %}"><a href="/nalog">Налог</a></div>
+        <div class="clearfix"></div>
+    </div>
+    {% block body %} {% endblock %}
+    <div class="clearfix"></div>
+    <div class="footer">БГ Биоскоп © 2025</div>
+</body>
+</html>

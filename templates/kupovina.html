@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>Биоскоп у београду - куповина!</title>
+{% endblock %}
+
+{% block body %}
+<div class="movie-info">
+    <img id="image" src="{{ url_for('static', filename='images/movies/'+movie.image) }}">
+    <div class="info-box">
+        <h1 id="movie-name">{{movie.title}}</h1>
+        <p>{{movie.description}}</p>
+        <span id="time">{{projection.time}}</span>
+        <span id="cinemahall">{{cinemahall.name}}</span>
+        <div class="seats">
+            <div class="row">
+            {% set ns = namespace(previous_row=1) %}
+            {% for seat in cinemahall.seats %}
+                {% if seat.row > ns.previous_row %}
+                    </div><br>
+                    <div class="row">
+                {% endif %}
+                
+                <button {% if seat.id in tickets %} style="background-color: black;" {% endif %} onclick="addseat(this, {% if seat.id in tickets %} -1, -1 {% else %} {{seat.row}}, {{seat.column}} {% endif %})" class="seat"></button>
+                {% set ns.previous_row = seat.row %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    <a href="#" id="buy">Резервиши: 0 RSD</a>
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix"></div>
+<script>let price = {{projection.price}}
+let projection = {{projection.id}}</script>
+<script src="{{ url_for('static', filename='js/buying.js') }}"></script>
+{% endblock %}
